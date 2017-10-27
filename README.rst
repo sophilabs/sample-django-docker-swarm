@@ -16,7 +16,6 @@ Installation in dev
 .. code-block:: bash
 
     git clone https://github.com/sophilabs/sample-django-docker-swarm.git
-
     docker-compose build
 
 Run the app in your local environment
@@ -39,9 +38,7 @@ First thing to do is to upload the built images to Docker cloud.
 .. code-block:: bash
 
     docker login
-    
     docker-compose build
-
     ./upload-images.sh <account name>
 
 2. Create Swarm via Docker Cloud

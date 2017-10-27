@@ -13,7 +13,7 @@ Types of Contributions
 Report Bugs
 ~~~~~~~~~~~
 
-Report bugs at https://github.com/sophilabs/django-sample-docker-swarm/issues.
+Report bugs at https://github.com/sophilabs/sample-django-docker-swarm/issues.
 
 If you are reporting a bug, please include:
 
