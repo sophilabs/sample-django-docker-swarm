@@ -1,0 +1,21 @@
+version: '3.2'
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend.dockerfile
+    ports:
+      - "80:80"
+    links:
+      - backend
+    # volumes:
+    #   - ./frontend:/usr/src/app/
+
+  backend:
+    build:
+      context: .
+      dockerfile: backend.dockerfile
+    ports:
+      - "8000:8000"
+    # volumes:
+    #   - ./backend:/usr/src/app/

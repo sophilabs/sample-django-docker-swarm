@@ -1,0 +1,58 @@
+version: '3.2'
+services:
+  frontend:
+    image: sophilabs/swarmtest_frontend:1.0.0
+    ports:
+      - "80:80"
+    deploy:
+      mode: replicated
+      replicas: 2
+      placement:
+        constraints:
+          - node.role == manager
+      resources:
+        limits:
+          cpus: '0.2'
+          memory: 500M
+        reservations:
+          cpus: '0.01'
+          memory: 200M
+      update_config:
+        parallelism: 2
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+    networks:
+      - backend_net
+    depends_on:
+      - backend
+
+  backend:
+    image: sophilabs/swarmtest_backend:1.0.0
+    ports:
+      - "8000"
+    deploy:
+      mode: replicated
+      replicas: 2
+      resources:
+        limits:
+          cpus: '0.2'
+          memory: 500M
+        reservations:
+          cpus: '0.01'
+          memory: 200M
+      update_config:
+        parallelism: 1
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+    networks:
+      - backend_net
+networks:
+  backend_net:
