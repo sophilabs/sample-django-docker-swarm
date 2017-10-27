@@ -12,13 +12,8 @@ setInterval(function () {
     if (xhr.readyState === DONE) {
       if (xhr.status === OK) {
         var payload = JSON.parse(xhr.responseText);
-
-        if (payload.version === appVersion) {
-          document.getElementsByTagName("body")[0]
-            .style.backgroundColor= payload.color;
-        } else {
-          window.location.reload(true);
-        }
+        document.getElementsByTagName("body")[0]
+          .style.backgroundColor= payload.color;
       } else {
         console.log('Error: ' + xhr.status);
       }

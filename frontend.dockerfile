@@ -16,7 +16,7 @@ RUN mkdir /etc/nginx/sites-available \
   /etc/nginx/nginx.conf
 
 ADD frontend /usr/src/app
-ADD VERSION /usr/src/app
+ADD VERSION /usr/src/app/VERSION
 WORKDIR /usr/src/app
 
 RUN sed -i "s/<version>/`cat VERSION`/g" app.js && sed -i "s/#version/`cat VERSION`/g" index.html

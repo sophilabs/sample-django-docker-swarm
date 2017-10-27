@@ -17,8 +17,6 @@ Installation in dev
 
     git clone https://github.com/sophilabs/sample-django-docker-swarm.git
 
-.. code-block:: bash
-
     docker-compose build
 
 Run the app in your local environment
@@ -36,9 +34,13 @@ Installation on a Swarm
 1. Upload images
 ~~~~~~~~~~~~~~~~
 
-First thing to do is upload the built images to Docker cloud.
+First thing to do is to upload the built images to Docker cloud.
 
 .. code-block:: bash
+
+    docker login
+    
+    docker-compose build
 
     ./upload-images.sh <account name>
 
@@ -86,12 +88,24 @@ Check you are connected to the swarm by listing the Swarm nodes.
 ~~~~~~~~~~~~~~~~~
 
 You can modify many aspects of your running services. Run
-`docker service update --help` to see a list of options.
+:bash:`docker service update --help` to see a list of options.
+
+**Update service image**
+
+.. code-block:: bash
+
+    docker service update --image <account>/<image>:<tag> <service>
+
+**Update service replicas**
+
+.. code-block:: bash
+
+    docker service update --replicas <number> <service>
 
 License
 -------
 
-Django Sample on Docker Swarm is MIT Licensed. Copyright (c) 2017 Sophilabs, Inc.
+Sample Django on Docker Swarm is MIT Licensed. Copyright (c) 2017 Sophilabs, Inc.
 
 
 Credits
